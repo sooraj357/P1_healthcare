@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Styles */
+.main_container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Form Styles */
+.registration-form h2 {
+  margin-bottom: 20px;
+  color: #333333;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+  </style>
+</head>
+<body>
+  <div class="main_container">
+  <div class="container">
+    <form class="registration-form">
+      <h2>Register</h2>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter your Aadhaar number" pattern="[0-9]{12}" maxlength="12" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+      </div>
+
+      <button type="submit" onclick="valid()">Register</button>
+    </form>
+  </div>
+</div>
+
+
+  <script>
+    function valid(){
+    var pass = document.getElementById("password").value;
+    var conpass = document.getElementById("confirm-password").value;
+    var message="";
+    if(pass !== conpass){
+        message="Password Not match";
+        
+    }
+    else if(pass.length<8){
+        message="enter password minimum 8 character";
+        
+    }
+    else{
+        var upp=/[a-z]/.test(pass);
+        var low=/[A-Z]/.test(pass);
+        var digit=/[0-9]/.test(pass);
+        var spec=/[@!#$%^&*~.;:]/.test(pass);
+        if( !upp  || !low || !digit || !spec ){
+         message="Enter password mixed like digit upper leter lower letter specil character";
+        }
+        else{
+            message="password is valid";
+        }
+    }
+   alert(message)
+    }
+</script>
+</body>
+</html>
